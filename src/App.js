@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './Components/NavBar';
+import ListPage from './Pages.js/GetingData';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductList from './Pages.js/ProductList';
+import GetingData from './Pages.js/GetingData';
+import { useState } from 'react';
+import ProductDetailsPage from './Pages.js/ProductDetailsPage';
+import ShoppingCart from './Pages.js/ShoppingCart';
+import ThankYou from './Pages.js/ThankYou';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <NavBar/>
+    <div>
+    <Router>
+        <Routes>
+          <Route path="/" exact element={<GetingData/>} />
+          <Route path="/details" exact element={<ProductDetailsPage/>} />
+          <Route path="/shopping_cart" exact element={<ShoppingCart/>} />
+          <Route path="/thanks" exact element={<ThankYou/>} />
+        </Routes>
+      </Router>
+
+      
     </div>
+    
+    </>
   );
 }
 
