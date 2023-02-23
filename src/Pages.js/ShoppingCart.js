@@ -29,7 +29,6 @@ navigator('/thanks');
 function handleRemove(prod){
     fetch(
         `http://localhost:8081/cart/`+prod.id,
-        // `http://localhost:5000/job/post`,
         {
           method: "DELETE",
           headers: {
@@ -54,9 +53,6 @@ function handleRemove(prod){
           className="px-2 py-2 m-2 border-solid border-2 border-gray-500 sm:rounded-md "
           key={prod.id}
         >
-          {/* <Link state={{ prod }} to={`/details`}>
-            <h1>{prod.name}</h1>
-          </Link> */}
           <img className="w-48" src={prod.image} alt={prod.name} />
 
           <div>
@@ -64,14 +60,6 @@ function handleRemove(prod){
             <p>Price : {prod.price}</p>
             <p>
                 Quantity : {prod.quantity}
-              
-              {/* Quantity :
-              <InputNumber
-                min={1}
-                max={10}
-                value={changeVlaue}
-                onChange={onChangeValue} */}
-              {/* /> */}
             </p>
             <p>Total Price : {prod.totalPrice} </p>
           </div>
@@ -99,7 +87,6 @@ function handleRemove(prod){
         </div>
     </>
 }
- 
 function getGrandTotal(data){
     let grandTotal = 0;
     for (let i = 0; i < data.length; i++) {

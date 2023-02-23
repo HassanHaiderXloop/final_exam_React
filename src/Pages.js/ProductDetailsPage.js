@@ -1,3 +1,4 @@
+import { InputNumber } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -5,16 +6,48 @@ const ProductDetailsPage = ({ details }) => {
   const [product, setProduct] = useState({});
   const navigator = useNavigate();
   const loc = useLocation();
+  const [changeVlaue, setChnageValue] = useState(1);
 
   useEffect(() => {
     setProduct(loc.state.prod);
   }, []);
 
 
-  const handleAddToCart = () => {
-    navigator("/AddToCart");
-  };
+  const handleAddToCart = (prod) =>{
 
+ 
+    if(changeVlaue > 0){
+        const requestData={
+            name : product.name,
+            image: product.image,
+            quantity: changeVlaue,
+            totalPrice: Number(product.price )* changeVlaue,
+            price: Number(product.price),
+        }
+        fetch(
+            `http://localhost:8081/cart/add`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(requestData),
+            },
+            {
+              mode: "cors",
+            }
+            )
+            .then((response) => response.json())
+            .then((data) => {
+            });
+        }
+        navigator('/shopping_cart')
+
+  }
+  const onChangeValue = (event) => {
+    setChnageValue(event);
+    // console.log(changeVlaue);
+  };
 
   return (
     <div className=" px-2 py-2">
@@ -29,7 +62,15 @@ const ProductDetailsPage = ({ details }) => {
         <h1 className="py-2">{product.name}</h1>
         <h3 className="py-2"> Discription : {product.longDescription}</h3>
         <h3 className="py-2">Price : {product.price}</h3>
-        
+        <p>
+              Quantity :
+              <InputNumber
+                min={1}
+                max={10}
+                value={changeVlaue}
+                onChange={onChangeValue}
+              />
+            </p>
         <div className='py-5 '>
         
         <button
