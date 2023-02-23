@@ -47,11 +47,11 @@ const Product = ({prod}) => {
           key={prod.id}
         >
           <Link state={{ prod }} to={`/details`}>
-            <h1>{prod.name}</h1>
+            <h1 className='font-bold text-2xl '>{prod.name}</h1>
           </Link>
-          <img className="w-48" src={prod.image} alt={prod.name} />
+          <img className="w-48 pt-4" src={prod.image} alt={prod.name} />
 
-          <div>
+          <div className='pt-4'>
             <h1>{prod.name}</h1>
             <p>{prod.shortDescription}</p>
             <p>Price : {prod.price}</p>

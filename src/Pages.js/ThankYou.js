@@ -25,14 +25,16 @@ const ThankYou = () => {
     }
   return (
     <div>
-        <p>
+        <p className='text-center text-6xl pt-4 '>
             Thanks You
         </p>
+        <div className='text-center pt-4' >
         <button 
-            className='bg-green-400 sm:rounded-md px-3 py-1 text-yellow-100 hover:bg-green-700'
+            className='bg-green-400 sm:rounded-md px-3 py-1  text-yellow-100 hover:bg-green-700'
             onClick={()=>{handleRemoveAll()}}
             >
             Start Over</button>
+            </div>
     </div>
   )
 }
