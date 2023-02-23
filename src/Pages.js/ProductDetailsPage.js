@@ -90,4 +90,3 @@ const ProductDetailsPage = ({ details }) => {
 };
 
 export default ProductDetailsPage;
-// border-solid border-2

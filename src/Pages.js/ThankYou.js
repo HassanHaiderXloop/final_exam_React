@@ -26,7 +26,7 @@ const ThankYou = () => {
   return (
     <div>
         <p className='text-center text-6xl pt-4 '>
-            Thanks You
+            Thank You
         </p>
         <div className='text-center pt-4' >
         <button 
